@@ -5,11 +5,11 @@ import BurgerIngredient from './BurgerIngredient/BurgerIngredient'
 const burger = (props) => {
   // Object.keys is a default JS object which has a keys method that extracts extracts keys from given
   // object and returns an array of those keys. Doing this to take state of BurgerBuilder (which is an object)
-  // and return all the states key and value pairs
+  // and return an array of subarrays with length of each ingredient array which equals total # of that ingredient.
   const arrayIngredients = Object.keys(props.ingredients)
-    .map(igKey => {
-      return [...Array(props.ingredients[igKey])].map((_, i) => {
-        return <BurgerIngredient key={igKey + i} type={igKey} />;
+    .map(ingredientKey => {
+      return [...Array(props.ingredients[ingredientKey])].map((_, i) => {
+        return <BurgerIngredient key={ingredientKey + i} type={ingredientKey} />;
       })
     });
 
