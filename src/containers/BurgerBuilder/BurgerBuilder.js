@@ -99,6 +99,7 @@ class BurgerBuilder extends React.Component {
       disabledInfo[key] = disabledInfo[key] <= 0
     }
     // code above outputting examples like: {salad: true, meat: false, etc...}
+    
     return(
       <Aux>
         <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
