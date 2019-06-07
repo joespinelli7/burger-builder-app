@@ -9,7 +9,7 @@ import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
 // as well as the toolbar opening the sideDrawer by clicking on the toggle btn.
 class Layout extends React.Component {
   state = {
-    showSideDrawer: true
+    showSideDrawer: false
   }
 
   sideDrawerClosedHandler = () => {
@@ -18,10 +18,18 @@ class Layout extends React.Component {
     })
   }
 
+  // this is clean way of setting state when it depends on the old state. Otherwise can cause problems
+  // bc of React's async nature.
+  sideDrawerToggleHandler = () => {
+    this.setState((prevState) => {
+      return {showSideDrawer: !prevState.showSideDrawer};
+    });
+  }
+
   render() {
     return (
       <Aux>
-        <Toolbar />
+        <Toolbar drawerToggleClicked={this.sideDrawerToggleHandler}/>
         <SideDrawer open={this.state.showSideDrawer} closed={this.sideDrawerClosedHandler}/>
         <main className={classes.Content}>
           {this.props.children}
