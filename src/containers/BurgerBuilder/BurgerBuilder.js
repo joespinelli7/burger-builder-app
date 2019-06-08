@@ -88,7 +88,7 @@ class BurgerBuilder extends React.Component {
   }
 
   purchaseContinueHandler = () => {
-    alert('Continued!');
+    alert('Enjoy your meal!');
   }
 
   render() {
@@ -99,7 +99,7 @@ class BurgerBuilder extends React.Component {
       disabledInfo[key] = disabledInfo[key] <= 0
     }
     // code above outputting examples like: {salad: true, meat: false, etc...}
-    
+
     return(
       <Aux>
         <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
