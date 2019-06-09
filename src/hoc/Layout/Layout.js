@@ -1,9 +1,10 @@
 import React from 'react';
-import Aux from '../../hoc/Aux';
+import Aux from '../Aux/Aux';
 import classes from './Layout.css';
-import Toolbar from '../Navigation/Toolbar/Toolbar';
-import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
+import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
+import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 
+// hoc: used to wrap other components
 // turn this component into a class component b/c this is where we use both toolbar and sidedrawer
 // so we can implement method that can listen to both sideDrawer closing by clicking on the Backdrop
 // as well as the toolbar opening the sideDrawer by clicking on the toggle btn.
