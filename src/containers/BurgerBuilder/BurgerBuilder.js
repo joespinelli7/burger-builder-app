@@ -4,6 +4,7 @@ import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
+import axios from '../../axios-orders';
 
 const INGREDIENT_PRICES = {
   salad: 0.5,
@@ -88,7 +89,28 @@ class BurgerBuilder extends React.Component {
   }
 
   purchaseContinueHandler = () => {
-    alert('Enjoy your meal!');
+    // alert('Enjoy your meal!');
+    // baseURL established so you can add whatever name to create a new node (orders here) then
+    // have to add .json for firebase (requirement)
+    const order = {
+      ingredients: this.state.ingredients,
+      price: this.state.totalPrice,
+      customer: {
+        name: 'Joe Spinelli',
+        address: {
+          street: 'Teststreet 1',
+          zipcode: '126942',
+          country: 'USA'
+        },
+        email: 'test@aol.com',
+      },
+      deliveryMethod: 'fastest'
+    }
+    axios.post('/orders.json', order)
+      .then(res => {
+        console.log(res)
+      })
+      .catch(error => console.log(error))
   }
 
   render() {
