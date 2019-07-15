@@ -26,6 +26,7 @@ class BurgerBuilder extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.props);
     axios.get('https://react-burger-builder-95e17.firebaseio.com/ingredients.json')
       .then(res => {
         this.setState({
@@ -105,36 +106,40 @@ class BurgerBuilder extends React.Component {
     // alert('Enjoy your meal!');
     // (line 114) baseURL established so you can add whatever name to create a new node (orders here) then
     // have to add .json for firebase (requirement)
-    this.setState({
-      loading: true
-    })
-    const order = {
-      ingredients: this.state.ingredients,
-      price: this.state.totalPrice,
-      customer: {
-        name: 'Joe Spinelli',
-        address: {
-          street: 'Teststreet 1',
-          zipcode: '126942',
-          country: 'USA'
-        },
-        email: 'test@aol.com',
-      },
-      deliveryMethod: 'fastest'
-    }
-    axios.post('/orders.json', order)
-      .then(res => {
-        this.setState({
-          loading: false,
-          purchasing: false
-        })
-      })
-      .catch(error => {
-        this.setState({
-          loading: false,
-          purchasing: false
-        })
-      })
+    // this.setState({
+    //   loading: true
+    // })
+    // const order = {
+    //   ingredients: this.state.ingredients,
+    //   price: this.state.totalPrice,
+    //   customer: {
+    //     name: 'Joe Spinelli',
+    //     address: {
+    //       street: 'Teststreet 1',
+    //       zipcode: '126942',
+    //       country: 'USA'
+    //     },
+    //     email: 'test@aol.com',
+    //   },
+    //   deliveryMethod: 'fastest'
+    // }
+    // axios.post('/orders.json', order)
+    //   .then(res => {
+    //     this.setState({
+    //       loading: false,
+    //       purchasing: false
+    //     })
+    //   })
+    //   .catch(error => {
+    //     this.setState({
+    //       loading: false,
+    //       purchasing: false
+    //     })
+    //   })
+
+    // history is special prop provided by the router, and there we have push prop which allows us to switch
+    // the page and push a new page onto the stack of pages
+    this.props.history.push('/checkout');
   }
 
   render() {
