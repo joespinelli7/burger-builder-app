@@ -13,6 +13,10 @@ const burger = (props) => {
       })
     })
     .reduce((arr, el) => {
+      if (el[0] && el[0].props.type === 'salad') {
+        let newArr = [...el, ...arr];
+        return newArr;
+      }
       return arr.concat(el)
     }, []);
 
