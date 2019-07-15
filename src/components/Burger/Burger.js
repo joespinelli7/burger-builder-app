@@ -19,7 +19,7 @@ const burger = (props) => {
     })
     .reduce((arr, el) => {
       if (el[0] && el[0].props.type === 'salad') {
-        // [...el, ...arr] is another way to concat 2 arrays into 1
+        // ex. ([...arr1, ...arr2]) is another way to concat 2 arrays into 1
         let newArr = [...el, ...arr];
         return newArr;
       }
