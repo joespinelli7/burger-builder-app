@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-// withRouter gives access to regular router params such as location, history, match etc. so you don't have to
-// pass it from top level component
+// withRouter gives access to regular router params such as location, history, match etc. so you don't have
+// to pass it from top level component
 // wrap component with it in export at bottom of page
 import classes from './Burger.css';
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient'
