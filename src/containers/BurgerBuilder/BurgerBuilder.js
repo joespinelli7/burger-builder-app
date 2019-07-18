@@ -149,7 +149,7 @@ class BurgerBuilder extends React.Component {
     for(let key in disabledInfo) {
       disabledInfo[key] = disabledInfo[key] <= 0
     }
-    // code above outputting examples like: {salad: true, meat: false, etc...}
+    // code above outputting examples like: {salad: true, meat: false, bacon: true, etc...}
 
     let orderSummary = null;
 
