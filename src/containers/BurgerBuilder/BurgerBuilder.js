@@ -139,7 +139,18 @@ class BurgerBuilder extends React.Component {
 
     // history is special prop provided by the router, and there we have push prop which allows us to switch
     // the page and push a new page onto the stack of pages
-    this.props.history.push('/checkout');
+    const queryParams = [];
+    for (let i in this.state.ingredients) {
+      // function encodes a Uniform Resource Identifier (URI) component by replacing each instance of
+      // certain characters by one, two, three, or four escape sequences representing the UTF-8 encoding
+      // of the character
+      queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
+    }
+    const queryString = queryParams.join('&');
+    this.props.history.push({
+      pathname: '/checkout',
+      search: '?' + queryString
+    });
   }
 
   render() {
