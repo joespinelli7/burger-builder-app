@@ -4,14 +4,15 @@ import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSumm
 class Checkout extends React.Component {
   state={
     ingredients: {
-      salad: 1,
-      meat: 1,
-      cheese: 1,
-      bacon: 1
+      salad: 0,
+      meat: 0,
+      cheese: 0,
+      bacon: 0
     }
   }
 
   componentDidMount() {
+    // URLSearchParams: an API for working with query parameters that is accessible in the browser
     const query = new URLSearchParams(this.props.location.search);
     const ingredients = {};
     for (let param of query.entries()) {
