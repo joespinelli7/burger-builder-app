@@ -103,40 +103,6 @@ class BurgerBuilder extends React.Component {
   }
 
   purchaseContinueHandler = () => {
-    // alert('Enjoy your meal!');
-    // (line 114) baseURL established so you can add whatever name to create a new node (orders here) then
-    // have to add .json for firebase (requirement)
-    // this.setState({
-    //   loading: true
-    // })
-    // const order = {
-    //   ingredients: this.state.ingredients,
-    //   price: this.state.totalPrice,
-    //   customer: {
-    //     name: 'Joe Spinelli',
-    //     address: {
-    //       street: 'Teststreet 1',
-    //       zipcode: '126942',
-    //       country: 'USA'
-    //     },
-    //     email: 'test@aol.com',
-    //   },
-    //   deliveryMethod: 'fastest'
-    // }
-    // axios.post('/orders.json', order)
-    //   .then(res => {
-    //     this.setState({
-    //       loading: false,
-    //       purchasing: false
-    //     })
-    //   })
-    //   .catch(error => {
-    //     this.setState({
-    //       loading: false,
-    //       purchasing: false
-    //     })
-    //   })
-
     const queryParams = [];
     for (let i in this.state.ingredients) {
       // function encodes a Uniform Resource Identifier (URI) component by replacing each instance of
@@ -144,6 +110,7 @@ class BurgerBuilder extends React.Component {
       // !!!(Simply encodes element so it can be used in the URL)!!!
       queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
     }
+    queryParams.push('price=' + this.state.totalPrice);
     const queryString = queryParams.join('&');
     // history is special prop provided by the router, and there we have push prop which allows us to switch
     // the page and push a new page onto the stack of pages

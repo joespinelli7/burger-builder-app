@@ -5,24 +5,27 @@ import ContactInfo from './ContactInfo/ContactInfo';
 
 class Checkout extends React.Component {
   state={
-    ingredients: {
-      salad: 0,
-      meat: 0,
-      cheese: 0,
-      bacon: 0
-    }
+    ingredients: null,
+    price: 0
   }
 
-  componentDidMount() {
+  // componentWillMount: so we can set up state prior to rendering children component
+  componentWillMount() {
     // URLSearchParams: an API for working with query parameters that is accessible in the browser
     const query = new URLSearchParams(this.props.location.search);
     const ingredients = {};
+    let price = 0;
     for (let param of query.entries()) {
       // param[0], param[1] = ['salad', '1']
-      ingredients[param[0]] = +param[1]; // + makes it an integer
+      if (param[0] === 'price') {
+        price = param[1];
+      } else {
+        ingredients[param[0]] = +param[1]; // + makes it an integer
+      }
     }
     this.setState({
-      ingredients: ingredients
+      ingredients: ingredients,
+      totalPrice: price
     })
   }
 
@@ -42,7 +45,10 @@ class Checkout extends React.Component {
           onCheckoutCancelled={this.checkoutCancelledHandler}
           onCheckoutContinued={this.checkoutContinuedHandler}
         />
-        <Route path={this.props.match.url + '/contact-data'} component={ContactInfo} />
+        <Route
+          path={this.props.match.url + '/contact-data'}
+          render={(props) => (<ContactInfo ingredients={this.state.ingredients} price={this.state.totalPrice} {...props}/>) }
+        />
       </div>
     );
   }
