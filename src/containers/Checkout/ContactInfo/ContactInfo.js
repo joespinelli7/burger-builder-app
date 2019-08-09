@@ -7,11 +7,20 @@ import Input from '../../../components/UI/Input/Input';
 
 class ContactData extends React.Component {
   state = {
-    name: '',
-    email: '',
-    address: {
-      street: '',
-      postalCode: ''
+    orderForm: {
+      name: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'Your Name'
+        },
+        value: ''
+      },
+      street: 'Teststreet 1',
+      zipcode: '126942',
+      country: 'USA',
+      email: 'test@aol.com',
+      deliveryMethod: 'fastest'
     },
     loading: false
   }
@@ -25,17 +34,7 @@ class ContactData extends React.Component {
     })
     const order = {
       ingredients: this.props.ingredients,
-      price: this.props.price,
-      customer: {
-        name: 'Joe Spinelli',
-        address: {
-          street: 'Teststreet 1',
-          zipcode: '126942',
-          country: 'USA'
-        },
-        email: 'test@aol.com',
-      },
-      deliveryMethod: 'fastest'
+      price: this.props.price
     }
     axios.post('/orders.json', order)
       .then(res => {
