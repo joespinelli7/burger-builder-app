@@ -16,11 +16,48 @@ class ContactData extends React.Component {
         },
         value: ''
       },
-      street: 'Teststreet 1',
-      zipcode: '126942',
-      country: 'USA',
-      email: 'test@aol.com',
-      deliveryMethod: 'fastest'
+      street: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'Street'
+        },
+        value: '',
+      },
+      zipcode: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'Zipcode'
+        },
+        value: '',
+      },
+      country: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'Zipcode'
+        },
+        value: '',
+      },
+      email: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'email',
+          placeholder: 'Email'
+        },
+        value: '',
+      },
+      deliveryMethod: {
+        elementType: 'input',
+        elementConfig: {
+          options: [
+                    {value: 'fastest', displayValue: 'Fastest'},
+                    {value: 'cheapest', displayValue: 'Cheapest'}
+                   ],
+        },
+        value: '',
+      }
     },
     loading: false
   }
@@ -53,7 +90,7 @@ class ContactData extends React.Component {
   render() {
     let form = (
       <form>
-        <Input inputtype="input" type="text" name="name" placeholder="Your Name" />
+        <Input elementType="..." elementConfig="..." value="..." />
         <Input inputtype="input" type="email" name="email" placeholder="Your Email" />
         <Input inputtype="input" type="text" name="street" placeholder="Street" />
         <Input inputtype="input" type="text" name="postal" placeholder="Postal Code" />
