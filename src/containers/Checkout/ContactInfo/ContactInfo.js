@@ -54,14 +54,14 @@ class ContactData extends React.Component {
           options: [
                     {value: 'fastest', displayValue: 'Fastest'},
                     {value: 'cheapest', displayValue: 'Cheapest'}
-                   ],
+          ],
         },
         value: '',
       }
     },
     loading: false
   }
- 
+
   orderHandler = (e) => {
     e.preventDefault();
     // baseURL established so you can add whatever name to create a new node (orders here) then
