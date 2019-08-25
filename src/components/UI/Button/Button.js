@@ -5,6 +5,7 @@ import classes from './Button.css';
 // add the success or danger btn. (btnType will be a prop passed that will either be 'Danger' or 'Success' to render correct styling)
 const button = (props) => (
   <button
+    disabled={props.disabled}
     className={[classes.Button, classes[props.btnType]].join(' ')}
     onClick={props.clicked}
   >
